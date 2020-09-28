@@ -8,11 +8,11 @@ int main(int argc, const char * argv[]) {
 	std::ofstream out("LexerOutput.txt");
 	// record latest;  
 	//while (record.getToken() != "fileend"){
-		//latest = callLexer(source); 
-		//cout << latest.getToken() << \t:\t << latest.getLexeme();
+		//latest = callLexer(&source); 
+		//out << latest.getToken() << \t:\t << latest.getLexeme();
 
 		//latest = callLexer(source.get())
-		//if (latest.isDone() == 1){		//cout << latest.getToken() << \t:\t << latest.getLexeme(); } //
+		//if (latest.isDone() == 1){		//out << latest.getToken() << \t:\t << latest.getLexeme(); } //
 	//}
 
 	out.close();
