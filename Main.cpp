@@ -6,7 +6,7 @@
 #include <algorithm>
 #include <iomanip>
 
-const std::vector<std::string> keywords = {"int", "float", "return", "function", "while", "if", "fi"};
+const std::vector<std::string> keywords = {"int", "float", "return", "function", "while", "if", "fi", "put", "get"};
 const std::vector<char> seps = { '[', ']', '(', ')', '{', '}', ';', ':'  ,'$', ',' };
 const std::vector<char> ops = { '=', '!', '<', '>', '-', '+', '*', '/'};
 
