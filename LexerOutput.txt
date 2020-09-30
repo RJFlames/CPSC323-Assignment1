@@ -7,11 +7,13 @@ keyword   	:	float
 identifier	:	c         
 operator  	:	=         
 separator 	:	(         
-int       	:	.0        
+real      	:	5.0       
 operator  	:	/         
 real      	:	9.0       
 separator 	:	)         
+operator  	:	*         
 separator 	:	(         
+identifier	:	f         
 operator  	:	-         
 int       	:	32        
 separator 	:	);        

@@ -50,8 +50,12 @@ record callLexer(std::ifstream& source) {
 			done = 1;
 			source.unget();
 		}
-		else if (state == "operator" && std::find(ops.begin(), ops.end(), c) == ops.end()) { done = 1; }
-		else if (state == "separator" && std::find(seps.begin(), seps.end(), c) == seps.end()) { done = 1; }
+		else if (state == "operator" && std::find(ops.begin(), ops.end(), c) == ops.end()) { done = 1; 
+		source.unget();
+		}
+		else if (state == "separator" && std::find(seps.begin(), seps.end(), c) == seps.end()) { done = 1; 
+		source.unget();
+		}
 
 		if (done == 1) {
 			if (state == "identifier" && std::find(keywords.begin(), keywords.end(), lexeme) != keywords.end()) { state = "keyword"; }
