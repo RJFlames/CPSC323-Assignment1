@@ -38,7 +38,9 @@ record callLexer(std::ifstream& source) {
 				done = 1;
 			}
 		}
-		else if (state == "identifier" && !isalnum(c)) { done = 1; }
+		else if (state == "identifier" && !isalnum(c)) { done = 1; 
+			source.unget();					
+		}
 		else if (state == "int") {
 			if (c == '.') { state = "real"; }
 			else if (!isdigit(c)) {
