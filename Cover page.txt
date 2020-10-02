@@ -15,9 +15,9 @@ Fill out all entries 1 - 7. If not, there will be deductions!
  ( A file that can be executed without compilation by the instructor, such as .exe, .jar,
  etc - NOT a source file such as .cpp )
 6. Names of the testcase files - input test file output test file
-test 1. [ Test less than 10.txt ] 		[ Output<10.txt ]
-test 2. [ Test less than 20.txt ] 		[ Output>10.txt ]
-test 3. [ Test more than 20.txt ] 		[ Output>20.txt ]
+test 1. [ Test less than 10.txt ] 		[ Output1.txt ]
+test 2. [ Test less than 20.txt ] 		[ Output2.txt ]
+test 3. [ Test more than 20.txt ] 		[ Output3.txt ]
 7. Operating System [ Windows ]
 (Window or Unix/Linux)
 
