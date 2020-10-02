@@ -6,7 +6,7 @@
 #include <algorithm>
 #include <iomanip>
 
-const std::vector<std::string> keywords = {"int", "float", "return", "function", "while", "if", "fi", "put", "get"};
+const std::vector<std::string> keywords = {"int", "float", "return", "function", "while", "if", "fi", "put"};
 const std::vector<char> seps = { '[', ']', '(', ')', '{', '}', ';', ':'  ,'$', ',' };
 const std::vector<char> ops = { '=', '!', '<', '>', '-', '+', '*', '/'};
 
@@ -38,8 +38,14 @@ record callLexer(std::ifstream& source) {
 				done = 1;
 			}
 		}
-		else if (state == "identifier" && !isalnum(c)) { done = 1; 
-			source.unget();					
+		else if (state != "comments" && lexeme == "/*") { 
+			state = "comments"; 
+			lexeme = "";
+		}
+
+		else if (state == "identifier" && !isalnum(c)) { 
+			done = 1; 
+			source.unget();
 		}
 		else if (state == "int") {
 			if (c == '.') { state = "real"; }
@@ -52,11 +58,17 @@ record callLexer(std::ifstream& source) {
 			done = 1;
 			source.unget();
 		}
-		else if (state == "operator" && std::find(ops.begin(), ops.end(), c) == ops.end()) { done = 1; 
-		source.unget();
+		else if (state == "operator" && std::find(ops.begin(), ops.end(), c) == ops.end()) { 
+			done = 1; 
+			source.unget();
 		}
-		else if (state == "separator" && std::find(seps.begin(), seps.end(), c) == seps.end()) { done = 1; 
-		source.unget();
+		else if (state == "separator" && std::find(seps.begin(), seps.end(), c) == seps.end()) { 
+			done = 1; 
+			source.unget();
+		}
+		else if (state == "comments" && c == '*' && (c = source.get()) == '/') {
+			state = "start";
+			c = source.get();
 		}
 
 		if (done == 1) {
@@ -67,7 +79,7 @@ record callLexer(std::ifstream& source) {
 			return latest;
 		}
 
-		if (!isspace(c)) { lexeme.push_back(c); }
+		if (!isspace(c) && state != "comments") { lexeme.push_back(c); }
 	}
 
 }
