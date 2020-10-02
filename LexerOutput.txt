@@ -23,6 +23,7 @@ keyword   	:	return
 identifier	:	c         
 separator 	:	;         
 separator 	:	}         
+operator  	:	/**/      
 separator 	:	$$        
 keyword   	:	put       
 separator 	:	(         
