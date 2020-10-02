@@ -27,7 +27,7 @@ record callLexer(std::ifstream& source) {
 	char c;
 	while (done != 1) {
 		c = source.get();
-		std::cout << c;
+		// \std::cout << c;
 		if (state == "start") {
 			if (isalpha(c)) { state = "identifier"; }
 			else if (isdigit(c)) { state = "int"; }
@@ -62,7 +62,7 @@ record callLexer(std::ifstream& source) {
 			done = 1; 
 			source.unget();
 		}
-		else if (state == "separator" && std::find(seps.begin(), seps.end(), c) == seps.end()) { 
+		else if (state == "separator") { 
 			done = 1; 
 			source.unget();
 		}
@@ -85,8 +85,10 @@ record callLexer(std::ifstream& source) {
 }
 
 int main(int argc, const char * argv[]) {
+
 	std::ifstream source(argv[1]);
-	std::ofstream out("LexerOutput.txt");
+	std::ofstream out(argv[2]);
+
 	record latest;  
 	do {
 		latest = callLexer(source); 
